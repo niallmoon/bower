@@ -70,9 +70,7 @@ while (options.argv.remain.length) {
 }
 
 // Ask for Insights on first run.
-analytics.setup(run);
-
-function run() {
+analytics.setup().then(function () {
     // Execute the command
     commandFunc = command && mout.object.get(bower.commands, command);
     command = command && command.replace(/\./g, ' ');
@@ -136,4 +134,4 @@ function run() {
     if (notifier.update && levels.info >= loglevel) {
         renderer.updateNotice(notifier.update);
     }
-}
+});
